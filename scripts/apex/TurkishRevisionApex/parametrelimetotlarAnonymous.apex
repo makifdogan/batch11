@@ -1,0 +1,17 @@
+ParametreliMetotlar11 pm11 = new ParametreliMetotlar11();
+string metin = 'Salesforce developer olma yolunda ilerliyorum';
+integer uzunluk = pm11.uzunluk(metin);
+System.debug(metin + ' cümlesinin karakter sayısı = '+ uzunluk);
+ParametreliMetotlar11 pm2 = new ParametreliMetotlar11();
+System.debug(pm2.rakamSayisi(333));
+Integer rs = pm2.rakamSayisi(4444444);
+System.debug('sayının rakam adedi = '+rs);
+ParametreliMetotlar11 pm3 = new ParametreliMetotlar11();
+System.debug(pm3.sum(11, 22));
+System.debug(pm3.cikarma(15, 35));
+Integer sonuc1 =pm3.sum(11, 22);
+Integer sonuc2 =pm3.cikarma(15, 35);
+ Decimal bolme = sonuc1/sonuc2;
+ System.debug('iki değerin bölme sonucu = '+ bolme);
+ParametreliMetotlar11 pm4 = new ParametreliMetotlar11() ; 
+pm4.asd('Sefillerin ', 19.99, 2);
