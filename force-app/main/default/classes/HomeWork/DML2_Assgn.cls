@@ -5,9 +5,7 @@ public  class DML2_Assgn {
         account acc2 = new account();
         acc2.Name = 'Assignment';
         insert acc ; 
-        insert acc2 ;
-          
-        
+        insert acc2 ;           
     }
     public static void updatind_dml() {
         account acc = new account();
@@ -15,6 +13,5 @@ public  class DML2_Assgn {
         insert acc ;
         acc.Name = 'Account Updated ';
         update acc ;         
-    }
-    
+    }    
 }
