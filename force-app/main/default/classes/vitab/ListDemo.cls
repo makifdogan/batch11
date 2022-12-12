@@ -12,8 +12,7 @@ public  class ListDemo {
     }else {
         returnValue='there is no value like that';
     }
-    return returnValue; 
-    
+    return returnValue;     
    }
 
    public static void randomIntegerList(){
@@ -34,7 +33,7 @@ public  class ListDemo {
     
    }
    
-   public static void allCats(){
+   public static list<cat> allCats(){
     List<cat> listCats = new List<cat>();
     Cat sfCat2 = new Cat('leo', 'white');
     Cat sfCat3 = new Cat('luna', 'orange');
@@ -44,6 +43,7 @@ public  class ListDemo {
     listCats.add(sfCat2);
     listCats.add(sfCat3);
     system.debug('cat list ' + listCats);
-   
+   return listCats ;
    }
+
 }
