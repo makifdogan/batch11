@@ -1,25 +1,29 @@
 trigger AccountTrigger on Account (before insert, before UPDATE,after insert, after UPDATE) {
-    if (trigger.isAfter&& trigger.isUpdate) {
-        System.debug('after update trigger '); 
-        map<id, account> accTriggerOldMap = trigger.oldMap; //map of old records, id is key
-         map<id, account> accTriggerNewMap = trigger.newMap; //map of new records, id is key
-         set<id> accountIds = accTriggerNewMap.keySet();
-         integer countwebsite = 0 ;
-         for (id eachid : accountids) {
-            account newacc = accTriggerNewMap.get(eachid);
-            String newWebsite = newacc.website ; 
-            System.debug('** newwebsite => '+ newwebsite);
-            account oldacc = accTriggerOldMap.get(eachid);
-            String oldWebsite = oldAcc.website ;   
-            System.debug('** oldwebsite => '+ oldwebsite);   
-            if (newWebsite != oldWebsite ){
-                System.debug('account is '+ newAcc.name + ' is website changed to  '+ newWebsite);
-                countwebsite ++ ;
-             }       
-         }
-        
-         System.debug('website updated for ** of accounts =>  '+ countwebsite);
+    if (Trigger.isBefore) {
+        AccountTriggerHandler.updateDescription(trigger.new, trigger.old,trigger.newMap, trigger.oldMap);
     }
+    
+    // if (trigger.isAfter&& trigger.isUpdate) {
+    //     System.debug('after update trigger '); 
+    //     map<id, account> accTriggerOldMap = trigger.oldMap; //map of old records, id is key
+    //      map<id, account> accTriggerNewMap = trigger.newMap; //map of new records, id is key
+    //      set<id> accountIds = accTriggerNewMap.keySet();
+    //      integer countwebsite = 0 ;
+    //      for (id eachid : accountids) {
+    //         account newacc = accTriggerNewMap.get(eachid);
+    //         String newWebsite = newacc.website ; 
+    //         System.debug('** newwebsite => '+ newwebsite);
+    //         account oldacc = accTriggerOldMap.get(eachid);
+    //         String oldWebsite = oldAcc.website ;   
+    //         System.debug('** oldwebsite => '+ oldwebsite);   
+    //         if (newWebsite != oldWebsite ){
+    //             System.debug('account is '+ newAcc.name + ' is website changed to  '+ newWebsite);
+    //             countwebsite ++ ;
+    //          }       
+    //      }
+        
+    //      System.debug('website updated for ** of accounts =>  '+ countwebsite);
+    // }
 
     // List<account> accTriggerOld = trigger.old; //list of old records
     // List<account> accTriggerNew = trigger.new; //list of new records
