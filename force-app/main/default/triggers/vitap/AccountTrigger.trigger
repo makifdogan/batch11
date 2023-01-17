@@ -1,8 +1,69 @@
 trigger AccountTrigger on Account (before insert, before UPDATE,after insert, after UPDATE) {
-    if (Trigger.isBefore) {
-        AccountTriggerHandler.updateDescription(trigger.new, trigger.old,trigger.newMap, trigger.oldMap);
+    // if (Trigger.isBefore) {
+    //     AccountTriggerHandler.updateDescription(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
+    // }
+    // if (Trigger.isAfter && Trigger.isUpdate) {
+    //     //HERE we call handler method to update all contacts VIP field
+    //     AccountTriggerHandler.updateVIPforContacts(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
+    // }
+    // if (Trigger.isAfter && Trigger.isInsert) {
+    //     AccountQueueableExamplee aq = new AccountQueueableExamplee(trigger.new);
+    //     id jobId = system.enqueueJob(aq);
+    //}
+    if (Trigger.isAfter && Trigger.isUpdate) {
+        Map<id , string> accountIDandDesc =  new Map<ID ,string>();
+        //Set<id> IDset = new Set<id>();
+       // set<String> DescList = new set<String>();
+
+        for (account eachAcc : trigger.new) {
+            if (eachAcc.description != trigger.oldMap.get(eachAcc.id).description) {
+                
+                //string de = eachAcc.description;
+                accountIDandDesc.put(eachAcc.id,eachAcc.description );
+            }
+        }
+       // Map<id , string> accountIDandDesc =  new Map<ID ,string>();
+        //accountIDandDesc.put(IDset, descList);
+        FutureExample11.updateOpportunitiesAndContacts(accountIDandDesc);
     }
+
+
+
+
+
+
+
+    // if (Trigger.isBefore) {
+    //     AccountTriggerHandler.duplicateName(trigger.new, trigger.old, trigger.oldMap, trigger.newMap);
+    // }
+    // if (trigger.isAfter && trigger.isInsert) {
+    //     AccountTriggerHandler.createOppAndCon(trigger.new, trigger.old, trigger.oldMap, trigger.newMap);
+    // }
+
+
+
+
+
+
+
+
+    //     if (Trigger.isBefore && Trigger.isUpdate) {
+//         for (Account acc : trigger.new) {
+//             if (acc.AnnualRevenue != trigger.oldMap.get(acc.id).AnnualRevenue) {
+//                 if (acc.AnnualRevenue >trigger.oldMap.get(acc.id).AnnualRevenue ) {
+//                     decimal fark = acc.AnnualRevenue  - trigger.oldMap.get(acc.id).AnnualRevenue;
+//                     acc.Description = 'Annual revenue '+ fark + ' artti';
+//                 } else if((acc.AnnualRevenue < trigger.oldMap.get(acc.id).AnnualRevenue)){
+//                     decimal fark = trigger.oldMap.get(acc.id).AnnualRevenue - acc.AnnualRevenue;
+//                     acc.Description = 'Annual revenue '+ fark + ' azaldi';  
+//             } 
+          
+//         }  
+//     }
+// }
     
+
+
     // if (trigger.isAfter&& trigger.isUpdate) {
     //     System.debug('after update trigger '); 
     //     map<id, account> accTriggerOldMap = trigger.oldMap; //map of old records, id is key

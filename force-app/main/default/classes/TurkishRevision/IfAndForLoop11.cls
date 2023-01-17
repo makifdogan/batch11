@@ -1,5 +1,5 @@
 public  class IfAndForLoop11 {
-    public void ifNumber(Integer a, Integer b){
+    public static void ifNumber(Integer a, Integer b){
         if (a>b) {
             System.debug(a+' sayısı büyüktür '+ b+ ' sayısından büyüktür');
         } else if (a<b) {
@@ -8,7 +8,7 @@ public  class IfAndForLoop11 {
                 System.debug(a+' sayısı '+ b +' sayısına eşittir');
              }                    
     }
-    public void ifBread (string order ,Integer count ){
+    public static void ifBread (string order ,Integer count ){
         Integer fiyat = 0;
         if (order =='Ekmek') {
             fiyat = count*1;
@@ -28,7 +28,7 @@ public  class IfAndForLoop11 {
         }
                     
     }
-    public void ifBreadSwitch(string order ,Integer count ){
+    public static void ifBreadSwitch(string order ,Integer count ){
         Integer fiyat = 0;
         switch on order {
             when  'Ekmek'{
@@ -49,17 +49,23 @@ public  class IfAndForLoop11 {
        }
     
 }
-    public integer forLoopSumNumbers (Integer n ){
+    public static integer forLoopSumNumbers (Integer n ){
         Integer sum = 0 ;
-        for (Integer i = 0; i <= n; i++) {
-            //sum = sum + i ;
-            sum += i ;
-            System.debug('i= '+ i);
-            System.debug(sum);                         
+        if (n>0) {
+                
+            for (Integer i = 0; i <= n; i++) {
+                //sum = sum + i ;
+                sum += i ;
+                System.debug('i= '+ i);
+                System.debug(sum);                         
+        }
+        
+        } else {
+           System.debug('sayınız 0 veya sıfırdanküçük '); 
         }
         return sum ;
     }
-    public integer whileSumNumbers (Integer n){
+    public static integer whileSumNumbers (Integer n){
         Integer sum = 0 ;
         Integer count = 1;
         while (count <= n) {
